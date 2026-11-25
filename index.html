@@ -22,12 +22,22 @@
             Paste suspicious messages here to check if they are scams.
         </p>
 
-        <input type="text" placeholder="Paste your message here">
-
-        <button>Analyze Message</button>
+        <input
+            type="text"
+            id="messageInput"
+            placeholder="Paste your message here"
+        >
+        <button id="analyzeButton">Analyze Message</button>
+        <div id="result" class="result-box">
+            Your analysis will appear here.
+        </div>
     </div>
 
     <!-- Connect JavaScript -->
     <script src="script.js"></script>
+
+
 </body>
 </html>
+
+
