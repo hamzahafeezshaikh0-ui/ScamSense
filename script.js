@@ -82,6 +82,13 @@ function detectSignals(message) {
 }
 
 // Calculate risk
+const explanations = {
+    urgency: "Creates pressure to act immediately.",
+    impersonation: "Pretends to represent a trusted organization.",
+    financial: "Attempts to obtain money or payments.",
+    credentials: "Requests sensitive information such as passwords or OTPs.",
+    urls: "Contains a link from a URL-shortening service."
+};
 function calculateRisk(findings) {
     let score = 0;
 
@@ -111,11 +118,13 @@ function calculateRisk(findings) {
     let level;
 
     if (score >= 60) {
-        level = "High Risk";
+    level = "High Risk";
     } else if (score >= 30) {
         level = "Medium Risk";
-    } else {
+    } else if (score > 0) {
         level = "Low Risk";
+    } else {
+        level = "No Risk";
     }
 
     return {
@@ -137,11 +146,19 @@ button.addEventListener("click", function() {
     );
 
     result.innerHTML = `
-        <h3>${analysis.level}</h3>
-        <h2>${analysis.score}/100</h2>
-        <p>Detected warning signs:</p>
+    <h3 class="${analysis.level.toLowerCase().replace(" ", "-")}">
+        ${analysis.level}
+    </h3>
+
+    <h2>${analysis.score}/100</h2>
+
+    <p>${findings.length > 0 ? "Detected warning signs:" : "No suspicious signals detected."}</p>
+
+    ${findings.length > 0 ? `
         <ul>
-            ${reasons.map(reason => `<li>${reason}</li>`).join("")}
+            ${findings.map(finding =>
+                `<li>${explanations[finding.category]}</li>`
+            ).join("")}
         </ul>
-    `;
-});
+    ` : ""}
+`;})

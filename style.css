@@ -82,3 +82,19 @@ button {
 .result-box ul {
     padding-left: 20px;
 }
+
+.high-risk {
+    color: #ef4444;
+}
+
+.medium-risk {
+    color: #f59e0b;
+}
+
+.low-risk {
+    color: #60a5fa;
+}
+
+.no-risk {
+    color: #22c55e;
+}
