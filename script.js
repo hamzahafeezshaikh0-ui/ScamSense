@@ -135,30 +135,33 @@ function calculateRisk(findings) {
 
 // Button event
 // Button event
+// Button event
 button.addEventListener("click", function() {
-    const message = input.value.toLowerCase();
+    const message = input.value.trim().toLowerCase();
+
+    if (message === "") {
+        result.innerHTML = '<p class="error-message">Please enter a message first.</p>';
+        return;
+    }
 
     const findings = detectSignals(message);
     const analysis = calculateRisk(findings);
 
-    const reasons = findings.map(
-        finding => finding.category
-    );
-
     result.innerHTML = `
-    <h3 class="${analysis.level.toLowerCase().replace(" ", "-")}">
-        ${analysis.level}
-    </h3>
+        <h3 class="${analysis.level.toLowerCase().replace(" ", "-")}">
+            ${analysis.level}
+        </h3>
 
-    <h2>${analysis.score}/100</h2>
+        <h2>${analysis.score}/100</h2>
 
-    <p>${findings.length > 0 ? "Detected warning signs:" : "No suspicious signals detected."}</p>
+        <p>${findings.length > 0 ? "Detected warning signs:" : "No suspicious signals detected."}</p>
 
-    ${findings.length > 0 ? `
-        <ul>
-            ${findings.map(finding =>
-                `<li>${explanations[finding.category]}</li>`
-            ).join("")}
-        </ul>
-    ` : ""}
-`;})
+        ${findings.length > 0 ? `
+            <ul>
+                ${findings.map(finding =>
+                    `<li>${explanations[finding.category]}</li>`
+                ).join("")}
+            </ul>
+        ` : ""}
+    `;
+});

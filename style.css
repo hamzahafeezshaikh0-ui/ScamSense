@@ -98,3 +98,18 @@ button {
 .no-risk {
     color: #22c55e;
 }
+
+
+.error-message {
+    color: #ef4444;
+    text-align: center;
+    margin: 0;
+    background: none;
+    border: none;
+}
+
+.result-box:has(.error-message) {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
