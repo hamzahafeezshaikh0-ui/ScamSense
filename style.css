@@ -1,21 +1,62 @@
-body{
+
+/* General page styling */
+body {
     background-color: #101827;
-    color:white;
-    font-family:Arial,sans-serif;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-h1{
-    color: blue;
+
+/* Main heading */
+h1 {
+    color: #60a5fa;
 }
-h2{
+
+/* Secondary heading */
+h2 {
     color: lightblue;
-
 }
-p{
-    color: grey;
-}
-button{
-    background-color:green;
-    color:white;
-    padding:12px;
 
+/* Paragraphs */
+p {
+    color: #94a3b8;
+}
+
+/* Main container */
+.container {
+    background-color: #1e293b;
+    padding: 30px;
+    border-radius: 12px;
+    width: 500px;
+    max-width: 90%;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+/* Message input */
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #475569;
+    border-radius: 8px;
+    background-color: #0f172a;
+    color: white;
+    box-sizing: border-box;
+}
+
+/* Input focus effect */
+input:focus {
+    outline: 2px solid #60a5fa;
+}
+
+/* Analyze button */
+button {
+    background-color: #16a34a;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
